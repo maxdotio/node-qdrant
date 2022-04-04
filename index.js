@@ -2,6 +2,11 @@ import { body_request, url_request } from "./request.js";
 
 const base_url = "http://localhost:6333/";
 
+const QdrantResponse = function(response) {
+	this.err = response[0];
+	this.response = response[1];
+}
+
 export const Qdrant = function(url){
 	this.url = url||base_url;
 };
@@ -10,21 +15,21 @@ export const Qdrant = function(url){
 Qdrant.prototype.delete_collection = async function (name) {
 	let qdrant_url = this.url;
 	let url = `${qdrant_url}collections/${name}`;
-	return await body_request(url,null,'DELETE');
+	return new QdrantResponse(await body_request(url,null,'DELETE'));
 }
 
 //PUT http://localhost:6333/collections/{collection_name}
 Qdrant.prototype.create_collection = async function (name,body) {
 	let qdrant_url = this.url;
 	let url = `${qdrant_url}collections/${name}`;
-	return await body_request(url,body,'PUT');
+	return new QdrantResponse(await body_request(url,body,'PUT'));
 }
 
 //GET http://localhost:6333/collections/{collection_name}
 Qdrant.prototype.get_collection = async function (name) {
 	let qdrant_url = this.url;
 	let url = `${qdrant_url}collections/${name}`;
-	return await url_request(url);
+	return new QdrantResponse(await url_request(url));
 }
 
 
@@ -32,7 +37,7 @@ Qdrant.prototype.get_collection = async function (name) {
 Qdrant.prototype.upload_points = async function (name,points) {
 	let qdrant_url = this.url;
 	let url = `${qdrant_url}collections/${name}/points`;	
-	return await body_request(url,{points:points},'PUT');
+	return new QdrantResponse(await body_request(url,{points:points},'PUT'));
 }
 
 //POST http://localhost:6333/collections/{collection_name}/points/search
@@ -49,5 +54,5 @@ Qdrant.prototype.search_collection = async function (name,vector,k,ef,filter) {
 		"top": k
 	};
 	if (filter) query.filter = filter;
-	return await body_request(url,query,'POST');
+	return new QdrantResponse(await body_request(url,query,'POST'));
 }
