@@ -1,0 +1,28 @@
+{
+  "name": "qdrant",
+  "version": "1.0.0",
+  "description": "Qdrant vector search engine client library",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxdotio/node-qdrant.git"
+  },
+  "keywords": [
+    "qdrant",
+    "search",
+    "ann"
+  ],
+  "author": "Max Irwin",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/maxdotio/node-qdrant/issues"
+  },
+  "homepage": "https://github.com/maxdotio/node-qdrant#readme",
+  "dependencies": {
+    "node-fetch": "^3.2.3"
+  }
+}
