@@ -27,7 +27,7 @@ const name = "pretty_colors";
 /// -------------------------------------------------------------------------
 /// Create the new collection with the name and schema
 const schema = {
-	"name":name,
+    "name":name,
     "vector_size": 3,
     "distance": "Cosine"
 };
@@ -140,3 +140,7 @@ Uploads vectors and payloads in `points` to the collection `name`
 ### `search_collection(name,vector,k,ef,filter)`
 
 Searches the collection with a `vector`, to get the top `k` most similar points (default 5), using HNSW `ef` (default is 128), and an optional payload filter.
+
+### `query_collection(name,query)`
+
+Searches the collection with a `query` that must be fully defined by the caller.

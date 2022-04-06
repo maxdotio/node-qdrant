@@ -7,7 +7,7 @@ const name = "pretty_colors";
 /// -------------------------------------------------------------------------
 /// Create the new collection with the name and schema
 const schema = {
-	"name":name,
+    "name":name,
     "vector_size": 3,
     "distance": "Cosine"
 };
