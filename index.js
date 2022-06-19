@@ -64,3 +64,10 @@ Qdrant.prototype.query_collection = async function (name,query) {
 	let url = `${qdrant_url}collections/${name}/points/search`;
 	return new QdrantResponse(await body_request(url,query,'POST'));
 }
+
+//Get the specific points by ids
+Qdrant.prototype.retrieve_points = async function (name,ids) {
+	let qdrant_url = this.url;
+	let url = `${qdrant_url}collections/${name}/points`;
+	return new QdrantResponse(await body_request(url,{"ids":ids},'POST'));
+}

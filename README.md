@@ -144,3 +144,7 @@ Searches the collection with a `vector`, to get the top `k` most similar points 
 ### `query_collection(name,query)`
 
 Searches the collection with a `query` that must be fully defined by the caller.
+
+### `retrieve_points(name,ids)`
+
+Gets all the points by the array of ids provided
